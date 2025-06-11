@@ -14,6 +14,7 @@ defaults:
 
 jobs:
   static-check:
+    timeout-minutes: 30
     runs-on: lynx-ubuntu-22.04-avd-medium
     steps:
       - name: Python Setup
@@ -58,6 +59,7 @@ jobs:
           python3 tools_shared/git_lynx.py check --checkers api-check
 
   darwin-native-unittests-check:
+    timeout-minutes: 60
     runs-on: lynx-darwin-14-medium
     steps:
       - name: Download Source
@@ -73,6 +75,7 @@ jobs:
           tools/rtf/rtf native-ut run --names lynx
 
   linux-native-unittests-check:
+    timeout-minutes: 60
     runs-on: lynx-ubuntu-22.04-avd-large
     steps:
       - name: Download Source
@@ -92,6 +95,7 @@ jobs:
           tools/rtf/rtf native-ut run --names lynx
 
   linux-native-devtool-unittests-check:
+    timeout-minutes: 60
     runs-on: lynx-ubuntu-22.04-avd-large
     steps:
       - name: Download Source
@@ -111,6 +115,7 @@ jobs:
           tools/rtf/rtf native-ut run --names devtool
 
   ios-unittests-check:
+    timeout-minutes: 60
     runs-on: lynx-darwin-14-medium
     steps:
       - name: Download Source
@@ -148,6 +153,7 @@ jobs:
           popd
 
   tasm-linux-build:
+    timeout-minutes: 60
     runs-on: lynx-ubuntu-22.04-avd-large
     steps:
       - name: Download Source
@@ -170,6 +176,7 @@ jobs:
           popd
 
   tasm-darwin-build:
+    timeout-minutes: 60
     runs-on: lynx-darwin-14-medium
     steps:
       - name: Download Source
@@ -188,6 +195,7 @@ jobs:
           popd
 
   tasm-wasm-build:
+    timeout-minutes: 60
     runs-on: lynx-darwin-14-medium
     steps:
       - name: Download Source
@@ -206,6 +214,7 @@ jobs:
           popd
 
   lynx-types-check:
+    timeout-minutes: 60
     runs-on: lynx-ubuntu-22.04-avd-medium
     steps:
       - name: Download Source
@@ -227,6 +236,7 @@ jobs:
           popd
 
   android-unittests-check:
+    timeout-minutes: 60
     runs-on: lynx-ubuntu-22.04-physical-medium
     steps:
       - name: Download Source
@@ -245,6 +255,7 @@ jobs:
           tools/rtf/rtf android-ut run --name lynx
 
   android-explorer-build:
+    timeout-minutes: 60
     runs-on: lynx-ubuntu-22.04-avd-large
     steps:
       - name: Download Source
@@ -258,6 +269,7 @@ jobs:
           build-params: -PIntegrationTest
 
   # android-e2e-test:
+  #   timeout-minutes: 60
   #   needs: [android-explorer-build]
   #   env:
   #     APPIUM_TEST_SERVER_PORT: 4723
